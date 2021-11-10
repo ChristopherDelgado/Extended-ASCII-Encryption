@@ -1,0 +1,1 @@
+# should take in a message and return the same message but encrypted as well as the key used
