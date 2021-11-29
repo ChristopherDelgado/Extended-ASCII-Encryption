@@ -21,8 +21,10 @@ def gui_decrypt():
     result = decrypt.decrypt(cipher, key)
 
     # show result on screen
+    decryptField.configure(state='normal')
     decryptField.delete('1.0', 'end')
-    decryptField.insert('1.0', result)
+    decryptField.insert('1.0', cipher)
+    decryptField.configure(state='disabled')
 
 
 # creating the window
