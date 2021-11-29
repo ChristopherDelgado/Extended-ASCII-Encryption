@@ -6,7 +6,6 @@ import Tkinter as tk
 
 # creating the window
 window = tk.Tk()
-window.title("Extended-ASCII-Encryption")
 
 # window size
 window.geometry('600x400')
@@ -15,7 +14,6 @@ window.geometry('600x400')
 def printInput():
     inp = inputtxt.get(1.0, "end-1c")
     lbl.config(text="Provided Input: " + inp)
-
 
 # TextBox Creation
 inputtxt = tk.Text(window,
