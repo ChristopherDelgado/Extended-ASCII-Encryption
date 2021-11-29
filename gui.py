@@ -16,14 +16,15 @@ def printInput():
 
     inp = inputtxt.get(1.0, "end-1c")
     result = encryption.ascii_caesar_shift(inp)
-    lbl = tk.Label(window, text="")
-    lbl.config(text="Encrypted: " + result[0])
-    lbl.pack()
+    keyTxt.configure(state='normal')
+    keyTxt.delete('1.0', 'end')
+    keyTxt.insert('1.0', result[1])
+    keyTxt.configure(state='disabled')
 
-    inp = inputtxt.get(1.0, "end-1c")
-    lbl = tk.Label(window, text="")
-    lbl.config(text="Key: " + result[1])
-    lbl.pack()
+    encryptTxt.configure(state='normal')
+    encryptTxt.delete('1.0', 'end')
+    encryptTxt.insert('1.0', result[0])
+    encryptTxt.configure(state='disabled')
 
 # TextBox Creation
 inputtxt = tk.Text(window,
@@ -37,6 +38,27 @@ printButton = tk.Button(window,
                         command=printInput)
 printButton.pack(pady = 20)
 
+encryptTxtTile = tk.Label(window, text="")
+encryptTxtTile.config(text="Encrypted: ")
+encryptTxtTile.pack(pady = 10)
+
+#text box creation
+encryptTxt = tk.Text(window,
+                     height=5,
+                     width=20,
+                     state='disabled')
+encryptTxt.pack(pady = 20)
+
+encryptTxtTile = tk.Label(window, text="")
+encryptTxtTile.config(text="Key: ")
+encryptTxtTile.pack(pady = 20)
+
+keyTxt = tk.Text(window,
+                     height=5,
+                     width=20,
+                     state='disabled',
+                    )
+keyTxt.pack()
 
 # creating the window label
 window.title('Extended ASCII Encryption')
