@@ -13,7 +13,7 @@ def gui_decrypt():
     key = keyField.get('1.0', 'end-1c')
 
     # exit if either of our inputs are empty
-    if not cipher and not key:
+    if not cipher or not key:
         tk.Label(window, text='ENTER ALL FIELDS', fg="#FF0000").grid(row=i, column=0, pady=5)
         return
 
@@ -22,7 +22,8 @@ def gui_decrypt():
 
     # show result on screen
     decryptField.delete('1.0', 'end')
-    decryptField.insert('1.0', 'end')
+    decryptField.insert('1.0', result)
+
 
 # creating the window
 window = tk.Tk()
@@ -44,7 +45,7 @@ decryptLabel = tk.Label(window, text='Decrypted', height=1, width=7)
 # encrypted message text field
 cipherField = tk.Text(window, height=1, width=50)
 keyField = tk.Text(window, height=1, width=50, )
-decryptField = tk.Text(window, height=1, width=50, state='disabled')
+decryptField = tk.Text(window, height=1, width=50, state='disabled')  # disabled prevents user from typing here
 
 # submit button
 submitButton = tk.Button(window, text="Decrypt", height=1, width=6, command=gui_decrypt)
@@ -59,9 +60,6 @@ for widget in textWidgets:
     # center this widget on the screen
     widget.grid_columnconfigure(1, weight=3)
     i += 1
-
-# adding the button to the window
-# decryption handling
 
 # start the window
 window.mainloop()
