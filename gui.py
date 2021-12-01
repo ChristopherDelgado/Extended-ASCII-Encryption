@@ -2,14 +2,14 @@
 # should hold the code to build a simple gui using tkinter and this gui should hold two text fields one for the message
 # and one for the key, and two buttons one for encrypting and one for decrypting
 
-import Tkinter as tk
+import tkinter as tk
 import encryption
 
 # creating the window
 window = tk.Tk()
 
 # window size
-window.geometry('600x400')
+window.geometry('450x250')
 
 #textBox
 def printInput():
@@ -26,40 +26,50 @@ def printInput():
     encryptTxt.insert('1.0', result[0])
     encryptTxt.configure(state='disabled')
 
+# copy text to clipboard
+def copyToClipboard(text):
+    window.clipboard_clear()
+    window.clipboard_append(text)
+    window.update()
+
 # TextBox Creation
 inputtxt = tk.Text(window,
-                   height=5,
-                   width=20)
+                   height=1,
+                   width=50)
 inputtxt.pack()
 
 # Button Creation
 printButton = tk.Button(window,
                         text="Encrypt Text",
                         command=printInput)
-printButton.pack(pady = 20)
+printButton.pack(pady = 5)
 
 encryptTxtTile = tk.Label(window, text="")
 encryptTxtTile.config(text="Encrypted: ")
-encryptTxtTile.pack(pady = 10)
+encryptTxtTile.pack(pady = 5)
 
 #text box creation
 encryptTxt = tk.Text(window,
-                     height=5,
-                     width=20,
+                     height=1,
+                     width=50,
                      state='disabled')
-encryptTxt.pack(pady = 20)
+encryptTxt.pack(pady = 5)
+
+tk.Button(window, text="Copy", pady=5, command=lambda: copyToClipboard(encryptTxt.get(1.0, "end-1c"))).pack()
 
 encryptTxtTile = tk.Label(window, text="")
 encryptTxtTile.config(text="Key: ")
-encryptTxtTile.pack(pady = 20)
+encryptTxtTile.pack(pady = 5)
+
+
 
 keyTxt = tk.Text(window,
-                     height=5,
-                     width=20,
+                     height=1,
+                     width=50,
                      state='disabled',
                     )
 keyTxt.pack()
-
+tk.Button(window, text="Copy", pady=5, command=lambda: copyToClipboard(keyTxt.get(1.0, "end-1c"))).pack()
 # creating the window label
 window.title('Extended ASCII Encryption')
 
