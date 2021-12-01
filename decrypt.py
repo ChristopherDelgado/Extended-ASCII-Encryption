@@ -4,7 +4,7 @@ def decrypt(cipher_message, key):
     # key split into proper pieces
     key = key.split(' ')
     # loop over each character in the cipher and key and decrypt
-    for i in range(len(cipher_message)):
+    for i in range(min(len(cipher_message), len(key))):
         # cipher_message length = key length so getting both characters at i is safe
         encrypted_char_ascii = ord(cipher_message[i])
         key_char_ascii = int(key[i])

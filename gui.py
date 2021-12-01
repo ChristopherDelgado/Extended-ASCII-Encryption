@@ -23,7 +23,7 @@ def gui_decrypt():
     # show result on screen
     decryptField.configure(state='normal')
     decryptField.delete('1.0', 'end')
-    decryptField.insert('1.0', cipher)
+    decryptField.insert('1.0', result)
     decryptField.configure(state='disabled')
 
 
